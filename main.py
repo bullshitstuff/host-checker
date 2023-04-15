@@ -35,4 +35,4 @@ for domain in domain_list:
     
     # If the domain is down, send a message to the Telegram
     if "Connection timed out" in check_result.text:
-        send_message(domain + " is down. ⚠️⚠️⚠️⚠️⚠️⚠️")
+        send_message(domain + " is down. ⚠️⚠️⚠️⚠️⚠️⚠️\n #domain")
