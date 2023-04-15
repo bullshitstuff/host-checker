@@ -1,0 +1,24 @@
+name: domain-check
+
+on:
+  schedule:
+    - cron: '*/5 * * * *'
+  workflow_dispatch:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v3
+    - uses: actions/setup-python@v3
+      with:
+        python-version: '3.x' # Version range or exact version of a Python version to use, using SemVer's version range syntax
+    - name: start check
+      run: |
+        pip install requests
+        python main.py
+      env:
+        CHATID: ${{ secrets.CHATID }}
+        TOKEN: ${{ secrets.TOKEN }}
+        DOMAIN: ${{ secrets.DOMAIN }}
